@@ -15,7 +15,15 @@ function AddTaskModal({ onSave }) {
     };
 
     const handleSubmit = () => {
-        onSave(form);
+        // Convertimos a formato LocalDateTime esperado por Spring Boot
+        const sendData = {
+            ...form,
+            dateBegin: form.dateBegin ? `${form.dateBegin}T00:00:00` : null,
+            dateEnd: form.dateEnd ? `${form.dateEnd}T00:00:00` : null
+        };
+
+        onSave(sendData);
+
         setForm({
             title: "",
             description: "",
@@ -47,7 +55,6 @@ function AddTaskModal({ onSave }) {
                                 onChange={handleChange}
                                 className="form-control"
                                 type="text"
-                                placeholder="Título de la tarea"
                             />
                         </div>
 
@@ -75,7 +82,7 @@ function AddTaskModal({ onSave }) {
                             />
                         </div>
 
-                        {/* Fecha de fin */}
+                        {/* Fecha fin */}
                         <div className="mb-3">
                             <label className="form-label">Fecha de fin</label>
                             <input
@@ -96,7 +103,6 @@ function AddTaskModal({ onSave }) {
                                 onChange={handleChange}
                                 className="form-control"
                                 type="text"
-                                placeholder="Nombre del responsable"
                             />
                         </div>
 
