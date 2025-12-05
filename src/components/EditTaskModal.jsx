@@ -8,9 +8,7 @@ function EditTaskModal({ task, onUpdate }) {
     const handleChange = e =>
         setForm({ ...form, [e.target.name]: e.target.value });
 
-    const handleSubmit = () => {
-        onUpdate(form);
-    };
+    const handleSubmit = () => onUpdate(form);
 
     return (
         <div className="modal fade" id="editTaskModal" tabIndex="-1">
@@ -24,6 +22,7 @@ function EditTaskModal({ task, onUpdate }) {
 
                     <div className="modal-body">
 
+                        {/* Título */}
                         <div className="mb-3">
                             <label className="form-label">Título</label>
                             <input
@@ -35,6 +34,7 @@ function EditTaskModal({ task, onUpdate }) {
                             />
                         </div>
 
+                        {/* Descripción */}
                         <div className="mb-3">
                             <label className="form-label">Descripción</label>
                             <textarea
@@ -46,14 +46,39 @@ function EditTaskModal({ task, onUpdate }) {
                             />
                         </div>
 
+                        {/* Fecha inicio */}
                         <div className="mb-3">
-                            <label className="form-label">Fecha</label>
+                            <label className="form-label">Fecha de inicio</label>
                             <input
                                 name="dateBegin"
                                 value={form?.dateBegin ? form.dateBegin.split("T")[0] : ""}
                                 onChange={handleChange}
                                 className="form-control"
                                 type="date"
+                            />
+                        </div>
+
+                        {/* Fecha fin */}
+                        <div className="mb-3">
+                            <label className="form-label">Fecha de fin</label>
+                            <input
+                                name="dateEnd"
+                                value={form?.dateEnd ? form.dateEnd.split("T")[0] : ""}
+                                onChange={handleChange}
+                                className="form-control"
+                                type="date"
+                            />
+                        </div>
+
+                        {/* Owner */}
+                        <div className="mb-3">
+                            <label className="form-label">Responsable</label>
+                            <input
+                                name="owner"
+                                value={form?.owner || ""}
+                                onChange={handleChange}
+                                className="form-control"
+                                type="text"
                             />
                         </div>
 
