@@ -6,12 +6,15 @@ function TaskTable({ tasks, onEdit, onDelete, onToggleStatus }) {
             <div className="card-body p-0">
                 <div className="table-responsive">
                     <table className="table table-hover table-striped mb-0">
+
                         <thead className="table-light">
                             <tr>
                                 <th className="py-3 px-4">ID</th>
                                 <th className="py-3 px-4 w-25">Título</th>
                                 <th className="py-3 px-4 w-50">Descripción</th>
-                                <th className="py-3 px-4">Fecha</th>
+                                <th className="py-3 px-4">Fecha Inicio</th>
+                                <th className="py-3 px-4">Fecha Fin</th>
+                                <th className="py-3 px-4">Responsable</th>
                                 <th className="py-3 px-4">Estado</th>
                                 <th className="py-3 px-4">Acciones</th>
                             </tr>
@@ -20,13 +23,34 @@ function TaskTable({ tasks, onEdit, onDelete, onToggleStatus }) {
                         <tbody>
                             {tasks.map(task => (
                                 <tr key={task.id}>
+
+                                    {/* ID */}
                                     <td className="py-3 px-4">{task.id}</td>
+
+                                    {/* Título */}
                                     <td className="py-3 px-4 fw-medium">{task.title}</td>
-                                    <td className="py-3 px-4 text-body-secondary">{task.description}</td>
+
+                                    {/* Descripción */}
+                                    <td className="py-3 px-4 text-body-secondary">
+                                        {task.description}
+                                    </td>
+
+                                    {/* Fecha Inicio */}
                                     <td className="py-3 px-4">
                                         {task.dateBegin?.split("T")[0]}
                                     </td>
 
+                                    {/* Fecha Fin */}
+                                    <td className="py-3 px-4">
+                                        {task.dateEnd?.split("T")[0]}
+                                    </td>
+
+                                    {/* Responsable */}
+                                    <td className="py-3 px-4">
+                                        {task.owner}
+                                    </td>
+
+                                    {/* Estado (switch) */}
                                     <td className="py-3 px-4">
                                         <div className="form-check form-switch">
                                             <input
@@ -38,6 +62,7 @@ function TaskTable({ tasks, onEdit, onDelete, onToggleStatus }) {
                                         </div>
                                     </td>
 
+                                    {/* Acciones */}
                                     <td className="py-3 px-4">
                                         <div className="d-flex gap-1">
                                             <button
