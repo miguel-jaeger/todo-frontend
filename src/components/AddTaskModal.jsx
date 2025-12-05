@@ -5,8 +5,9 @@ function AddTaskModal({ onSave }) {
         title: "",
         description: "",
         dateBegin: "",
+        dateEnd: "",
         status: "pendiente",
-        owner: "Luis"
+        owner: ""
     });
 
     const handleChange = e => {
@@ -19,8 +20,9 @@ function AddTaskModal({ onSave }) {
             title: "",
             description: "",
             dateBegin: "",
+            dateEnd: "",
             status: "pendiente",
-            owner: "Luis"
+            owner: ""
         });
     };
 
@@ -36,6 +38,7 @@ function AddTaskModal({ onSave }) {
 
                     <div className="modal-body">
 
+                        {/* Título */}
                         <div className="mb-3">
                             <label className="form-label">Título</label>
                             <input
@@ -48,6 +51,7 @@ function AddTaskModal({ onSave }) {
                             />
                         </div>
 
+                        {/* Descripción */}
                         <div className="mb-3">
                             <label className="form-label">Descripción</label>
                             <textarea
@@ -59,14 +63,40 @@ function AddTaskModal({ onSave }) {
                             />
                         </div>
 
+                        {/* Fecha inicio */}
                         <div className="mb-3">
-                            <label className="form-label">Fecha</label>
+                            <label className="form-label">Fecha de inicio</label>
                             <input
                                 name="dateBegin"
                                 value={form.dateBegin}
                                 onChange={handleChange}
                                 className="form-control"
                                 type="date"
+                            />
+                        </div>
+
+                        {/* Fecha de fin */}
+                        <div className="mb-3">
+                            <label className="form-label">Fecha de fin</label>
+                            <input
+                                name="dateEnd"
+                                value={form.dateEnd}
+                                onChange={handleChange}
+                                className="form-control"
+                                type="date"
+                            />
+                        </div>
+
+                        {/* Owner */}
+                        <div className="mb-3">
+                            <label className="form-label">Responsable</label>
+                            <input
+                                name="owner"
+                                value={form.owner}
+                                onChange={handleChange}
+                                className="form-control"
+                                type="text"
+                                placeholder="Nombre del responsable"
                             />
                         </div>
 
