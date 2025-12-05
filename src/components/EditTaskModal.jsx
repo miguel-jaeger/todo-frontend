@@ -8,7 +8,15 @@ function EditTaskModal({ task, onUpdate }) {
     const handleChange = e =>
         setForm({ ...form, [e.target.name]: e.target.value });
 
-    const handleSubmit = () => onUpdate(form);
+    const handleSubmit = () => {
+        const sendData = {
+            ...form,
+            dateBegin: form.dateBegin ? `${form.dateBegin}T00:00:00` : null,
+            dateEnd: form.dateEnd ? `${form.dateEnd}T00:00:00` : null
+        };
+
+        onUpdate(sendData);
+    };
 
     return (
         <div className="modal fade" id="editTaskModal" tabIndex="-1">
